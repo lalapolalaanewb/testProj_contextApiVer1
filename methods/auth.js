@@ -34,23 +34,23 @@ const handleNoneInput = input => {
 // @route   POST /api/v1/auth
 // @access  Private
 exports.userLogin = async(req, res, next) => {
-  const { email } = req.body
+  const { email, password } = req.body
   console.log('server: '); console.log(req.body); console.log(typeof email)
   // check user exist
-  const userExist = await User.findOne({ 'credentials.emails.main': email.email })
+  const userExist = await User.findOne({ 'credentials.emails.main': email })
   if(!userExist) return res.status(401).json({
     success: false,
     error: `Incorrect username or password.`,
     data: {}
-  })
+  }); console.log('email lps')
   
   // check if password matched
-  const valiPassword = await bcrypt.compare(email.password, userExist.credentials.password)
+  const valiPassword = await bcrypt.compare(password, userExist.credentials.password)
   if(!valiPassword) return res.status(401).json({
     success: false,
     error: `Incorrect password or username.`,
     data: {}
-  })
+  }); console.log('password lps')
   
   // assign new session data for user
   await logIn(req, userExist._id)

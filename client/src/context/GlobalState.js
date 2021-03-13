@@ -2,7 +2,7 @@ import React, { createContext, useReducer } from 'react'
 import GlobalReducer from './GlobalReducer'
 import axios from 'axios'
 import { config, configPrivate } from '../utils/Header/Header'
-import { getCookie } from '../utils/Cookie/Cookie'
+import { getCookie, setCookie, removeCookie } from '../utils/Cookie/Cookie'
 
 // Initial state
 const initialState = {
@@ -60,7 +60,7 @@ export const GlobalProvider = ({ children }) => {
         config
       )
 
-      let result = res.data.data
+      let result = res.data.data; console.log(result)
 
       setCookie('uid', result.uid, { path: '/', expires: new Date(result.sato) })
       setCookie('onRefresh', '', { path: '/' })
@@ -69,7 +69,7 @@ export const GlobalProvider = ({ children }) => {
 
       setAuth(true)
       setLoading(false)
-    } catch(err) {
+    } catch(err) { console.log(err)
       setError({ status: true, message: err })
     }
   }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { Redirect, Route } from 'react-router-dom'
 import { GlobalContext } from '../../../context/GlobalState'
 import { getCookie } from '../../../utils/Cookie/Cookie' 

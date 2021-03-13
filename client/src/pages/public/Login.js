@@ -2,8 +2,13 @@ import React, { useState, useEffect, useContext } from 'react'
 import { GlobalContext } from '../../context/GlobalState'
 
 const Login = () => {
-  /** auth - action */
-  const { isLogin } = useContext(GlobalContext)
+  /** auth - states & action */
+  const { 
+    // global states
+    loading, error, message,
+    // auth action
+    isLogin 
+  } = useContext(GlobalContext)
 
   /** user - states */
   const [email, setEmail] = useState('')
