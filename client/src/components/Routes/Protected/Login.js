@@ -1,20 +1,22 @@
 import React, { useEffect } from 'react'
 import { Redirect, Route } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import { setLoadingAuth, isAuthenticated } from '../../../redux/actions'
+import { GlobalContext } from '../../../context/GlobalState'
 import { getCookie } from '../../../utils/Cookie/Cookie' 
 
 const Login = ({ component: Component, ...rest }) => {
-  /** redux dispatch */
-  const dispatch = useDispatch()
-
-  /** auth states */
-  const authenticated = useSelector(state => state.auth.authenticated)
-  const loading = useSelector(state => state.auth.loading)
+  /** auth - states & actions */
+  const {
+    // global
+    loading,
+    // states
+    authenticated,
+    // actions
+    isAuth
+  } = useContext(GlobalContext)
 
   /** check user authentication - function */
   useEffect(() => {
-    dispatch(isAuthenticated())
+    isAuth()
   }, [])
 
   return (

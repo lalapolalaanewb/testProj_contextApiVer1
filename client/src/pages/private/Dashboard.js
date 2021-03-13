@@ -1,32 +1,34 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { setErrorDashboard, setLoadingDashboard, isDashboard } from '../../redux/actions'
+import React, { useEffect } from 'react'
+import { GlobalContext } from '../../context/GlobalState'
 
 const Dashboard = () => {
-  /** redux saga dispatch */
-  const dispatch = useDispatch()
-
-  /** dispatch - states */
-  const error = useSelector(state => state.dashboard.error)
-  const message = useSelector(state => state.dashboard.message)
-  const loading = useSelector(state => state.dashboard.loading)
-  const id = useSelector(state => state.dashboard.user.id)
-  const email = useSelector(state => state.dashboard.user.email)
-  const name = useSelector(state => state.dashboard.user.name)
+  /** dashboard - states & actions */
+  const {
+    // global
+    loading,
+    error,
+    message,
+    // states
+    user,
+    // actions
+    getDashboard
+  } = useContext(GlobalContext)
 
   /** get dashboard - function */
   useEffect(() => {
     (() => {
-      dispatch(isDashboard())
+      getDashboard()
     })()
   }, [])
 
   return (
     <div>
+      {loading && <p>Loading...</p>}
+      {error && <p>Message: {message}</p>}
       <h1>Dashboard!</h1>
-      <p>ID: {id}</p>
-      <p>Email: {email}</p>
-      <p>Name: {name}</p>
+      <p>ID: {user.id}</p>
+      <p>Email: {user.email}</p>
+      <p>Name: {user.name}</p>
     </div>
   )
 }

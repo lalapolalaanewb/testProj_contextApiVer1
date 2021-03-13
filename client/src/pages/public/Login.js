@@ -1,15 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { setErrorAuth, isLogin } from '../../redux/actions'
+import React, { useState, useEffect, useContext } from 'react'
+import { GlobalContext } from '../../context/GlobalState'
 
 const Login = () => {
-  /** redux saga dispatch */
-  const dispatch = useDispatch()
-
-  /** auth - states */
-  const error = useSelector(state => state.auth.error)
-  const message = useSelector(state => state.auth.message)
-  const loading = useSelector(state => state.auth.loading)
+  /** auth - action */
+  const { isLogin } = useContext(GlobalContext)
 
   /** user - states */
   const [email, setEmail] = useState('')
@@ -20,7 +14,7 @@ const Login = () => {
   useEffect(() => {
     (() => {
       if(submit) { console.log(email); console.log(password)
-        dispatch(isLogin(email, password))
+        isLogin(email, password)
         
         setPassword('')
         setSubmit(false)
