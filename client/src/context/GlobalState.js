@@ -97,6 +97,7 @@ export const GlobalProvider = ({ children }) => {
       if(result.success) {
         removeCookie('uid', { path: '/' })
         removeCookie('onRefresh', { path: '/' })
+        localStorage.removeItem('uid')
       }
 
       setAuth(true)
@@ -109,7 +110,8 @@ export const GlobalProvider = ({ children }) => {
   // Action Auth - SET auth for authenticated user (Frontend Implementation)
   async function isAuth() {
     try {
-      const res = getCookie('uid')
+      // const res = getCookie('uid')
+      let res = localStorage.getItem('uid')
 
       let result = res
 

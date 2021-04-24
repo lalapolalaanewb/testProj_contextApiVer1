@@ -1,6 +1,6 @@
 # Portfolio V4
 
-Fourth version of my Portfolio making from the scratch.
+React-Node authentication process using Context API state management.
 
 ## Getting Started
 
@@ -34,41 +34,6 @@ C:\parentFolder\ProjectFolder\>
 
 ```
 
-- Install all dependencies required (for `server` & `client` folder as stated in `package.json`)
-  - `server` folder
-    - devDependencies:-
-      - concurrently
-      - nodemon
-    - dependencies
-      - @hapi/joi
-      - bcryptjs
-      - colors
-      - connect-redis
-      - dotenv
-      - express
-      - express-session
-      - jsonwebtoken
-      - mongoose
-      - morgan
-      - multer
-      - nodemailer
-      - redis
-  - `client` folder
-    - @material-ui/core
-    - @material-ui/icons
-    - @material-ui/lab
-    - axios
-    - classnames
-    - disqus-react
-    - material-table
-    - react-icons
-    - react-markdown
-    - react-router-dom
-    - react-share
-    - react-syntax-highlighter
-    - universal-cookie
-    - uuid
-
 ```
 // for server dependencies installation
 C:\parentFolder\ProjectFolder\> npm install
@@ -82,17 +47,6 @@ C:\parentFolder\ProjectFolder\client> npm install
 ```
 C:\parentFolder\ProjectFolder\> npm run dev
 ```
-
-## Important Notes
-
-Below are some of the CRUD images available in the project (admin access only):-
-
-![dashboard_light](/images/readme_adminDemo_1.PNG#thumbnail_fw)
-![posts_light](/images/readme_adminDemo_2.PNG#thumbnail_fw)
-![medias_light](/images/readme_adminDemo_3.PNG#thumbnail_fw)
-![abouts_light](/images/readme_adminDemo_4.PNG#thumbnail_fw)
-![resumes_light](/images/readme_adminDemo_5.PNG#thumbnail_fw)
-![posts_dark](/images/readme_adminDemo_6.PNG#thumbnail_fw)
 
 ## Deployment
 
